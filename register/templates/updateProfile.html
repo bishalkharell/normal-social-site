@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block body %}
+    <h1>Update Profile</h1>
+
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+
+        {% for i in form %}
+                    <div class="error" style="margin: 0.3rem 0;color: crimson; font-size: 0.9rem;"> {{ i.errors}} </div>
+            {{ i.label }}
+            {{ i }}
+
+        {% endfor %}
+        
+        {{ profileForm }}
+
+       
+
+        <input type="submit" value="Update">
+    </form>
+
+{% endblock %}

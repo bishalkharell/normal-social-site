@@ -1,0 +1,149 @@
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block title %}{% endblock %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"
+    integrity="sha512-t38vG/f94E72wz6pCsuuhcOPJlHKwPy+PY+n1+tJFzdte3hsIgYE7iEpgg/StngunGszVMrRfvwZinrza0vMTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'lightbox.css' %}">
+  <link rel="stylesheet" href="{% static 'profile.css' %}">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 'base.css' %}">
+  <link rel="stylesheet" href="{% static 'blog.css' %}">
+</head>
+
+<body>
+  {% block message %}
+
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      {{ message }}
+    </div>
+
+
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% endblock%}
+
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo" style="margin-left: 2rem;">Shadow</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        {% if user.is_authenticated %}
+
+        <li>
+          <div class="dropdown-container">
+            <div class="user-model">
+              <p><strong>{{ user.username }}</strong></p>
+              <div class="user-model-info">
+                <img src="{{ user.userprofile.userImage.url }}" alt="">
+                <i class="material-icons">expand_more</i>
+              </div>
+            </div>
+            <div class="dropdown-menu">
+              <div class="dropdown-user-info">
+                <img src="{{ user.userprofile.userImage.url }}" alt="">
+                <div class="user-dropdown-info">
+                  <p>{{ user.username }}</p>
+                  <p>{{ user.email }}</p>
+                </div>
+              </div>
+              <div class="dropdown-menus">
+                <ul>
+                  <li><a href="{% url 'profile' %}"> <i class="material-icons">person_outline</i>Profile</a></li>
+                  <li><a href="{% url 'blog'%}"><i class="material-icons">library_books</i>Blog</a></li>
+                  <li><a href="{% url 'logout' %}"><i class="material-icons">launch</i>Logout</a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </li>
+
+        {% else %}
+        <li><a href="{% url 'loginPage' %}">Login</a></li>
+        <li><a href="{% url 'registerPage' %}" style="margin-right: 3rem;">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'profile' %}">Profile</a></li>
+    <li><a href="{% url 'blog'%}">Blog</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+    <li><a href="{% url 'loginPage' %}">Login</a></li>
+    <li><a href="{% url 'registerPage' %}" style="margin-right: 3rem;">Sign Up</a></li>
+    {% endif %}
+  </ul>
+
+
+
+
+
+
+
+
+
+  <div class="bodyContainer" style="min-height: 100vh;">
+    {% block body %}
+
+
+    {% endblock %}
+  </div>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+
+        <a class="grey-text text-lighten-4 right" href="{% url 'contactus' %}">Contact</a>
+        <p>© 2021 Copyright Shadow</p>
+
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
+    integrity="sha512-m2PhLxj2N91eYrIGU2cmIu2d0SkaE4A14bCjVb9zykvp6WtsdriFCiXQ/8Hdj0kssUB/Nz0dMBcoLsJkSCto0Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    let a = "{{ request.user }}"
+    console.log("The user is ",a);
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.materialboxed');
+      var instances = M.Materialbox.init(elems);
+    });
+
+  </script>
+
+  <script src="{% static 'js/js.js' %}"></script>
+  <script src="{% static 'js/lightbox.js' %}"></script>
+ 
+</body>
+
+</html>

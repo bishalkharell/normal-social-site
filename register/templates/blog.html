@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+
+
+
+</head>
+
+<body>
+
+    {% block body %}
+
+    <div class="container">
+
+        {% if user.is_authenticated %}
+                <button onclick="show_addBlog()">Add New Blog</button>
+                <div class="addBlog_parent">
+                <div class="addBlogForm" id="addBlog">
+                    <h4>Add New Blog</h4>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                            {{ form }}
+
+                        <div class="blog-btn">
+                            <input type="submit" value="Add Blog" style="display: block;">
+                            <a href="{% url 'blog' %}">close</a>
+                        </div>
+                    </form>
+                   
+                </div>
+            </div>
+
+
+        {% if blog|length == 0 %}
+        <p style="margin-top:5rem;">No any Blog Yet... Make one</p>
+        {% else %}
+        {% for i in blog %}
+        <div class="blog-container"
+            style="border-bottom:2px black solid; padding: 2rem 0; margin: 2rem inherit; position:relative;">
+            <div class="blog-content">
+                <p> Blog Title: {{ i.blogtitle }}</p>
+                <p> Blog Author: {{ i.blog_author }}</p>
+                <p> Blog Time: {{ i.blogtime }}</p>
+                <p> Blog Post: {{ i.blogpost }}</p>
+                <a href="{% url 'updateblog' i.id %}">Update</a>
+                <a href="{% url 'deleteblog' i.id %}">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% else %}
+        <p>Sorry You are not allowed to view this page.</p>
+        <p>Please Login to View.</p>
+        <button><a href="/login">Login</a></button>
+        {% endif %}
+    </div>
+
+    {% endblock %}
+
+</body>
+
+</html>

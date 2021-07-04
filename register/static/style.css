@@ -1,0 +1,245 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+label{
+    font-size: 1rem;
+}
+
+
+
+
+
+
+/* Image Container */
+
+.image-container{
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.profile_container{
+    flex: 50%;
+}
+
+.profile_container form{
+    margin: 0.5rem 0;
+    padding: 0.2rem 0.2rem;
+}
+
+.image-container img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 2px black solid ;
+}
+
+/* Information of User Profile, Bio, First Name etc */
+.user_information{
+    flex: 50%;
+}
+
+.user_information > * {
+    padding: 0.5rem;
+    margin:0.5rem 0;
+}
+
+
+
+.alert {
+    padding: 1rem;
+    color: black;
+    background-color: #DFF2BF;
+}
+  
+  .closebtn {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+  .closebtn:hover {
+    color: black;
+}
+
+
+/* Profile Gallery */
+
+
+
+.gallery_container{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+    grid-auto-flow: dense;
+    margin: 2rem;
+    padding: 0.5rem;
+    
+   
+
+}
+
+
+
+.gallery_image{
+    width: 100% ;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+
+.gallery_image img:hover{
+    border: 2px solid black;
+}
+
+.gallery_image img{
+    max-width: 100% ;
+    min-height: 100% ;
+    object-fit:cover;
+    object-position: 50% 50%;
+}
+
+.gallery_image:first-child{
+    grid-row: span 2 ;
+    grid-column: span 2;
+}
+
+
+
+/* Searching User */
+
+
+.profile{
+    all: unset;
+    border-bottom: 2px solid black;
+    margin: 2rem 0;
+    height: auto;
+    border-radius: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    width: 100%;
+    background: none;
+    outline: none;
+}
+
+.blog-profile{
+    border-bottom: none;
+}
+
+.profile img{
+    padding: 0.2rem  0.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100px;
+    height:100px;
+
+}
+
+.blog-profile img{
+    width:80px;
+    height:80px;
+}
+
+
+
+.user_name{
+    align-self: center;
+    justify-self: center;
+    padding:0 1rem;
+    font-weight: bolder;
+    font-family: 'helvetica',sans-serif,arial;
+    font-size: clamp(0.5rem,1.1rem,1.2rem);
+}
+
+
+
+
+
+/* ADD Blog */
+.addBlog_parent{
+    position: relative;
+    width: 100%;
+    /* height: 30vh; */
+}
+
+
+.addBlogForm{
+    position: absolute;
+    transform-origin: left top ;
+    transform: scale(0,0);
+    transition:500ms ease;
+}
+
+.blog-btn{
+    display: flex;
+    flex-basis:1;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0.5rem auto; */
+    
+    
+}
+
+.blog-btn > * {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+
+
+/* view profile gallery */
+
+fieldset{
+    margin: 1rem 0 2rem 0 ;
+}
+
+fieldset legend{
+    font-size: 1.5rem;
+    font-family: Helvetica, sans-serif;
+    font-weight: 500;
+
+}
+
+.view_profile_gallery{
+    margin: 2rem 0;
+}
+
+
+
+
+@media screen and (max-width: 1000px){
+    .profile img{
+        width:80px;
+        height:80px;
+    }
+}
+
+
+@media screen and (max-width: 680px){
+    .image-container{
+       
+        flex-direction: column;
+        text-align: center;
+
+    }
+
+    .image-container img{
+        margin: 0 auto;
+        width:200px;
+        height:200px;
+    }
+       
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+
+
+<div class="container searchContainer" style="margin-top:3rem;">
+    {% if filterUser|length == 0 or query == "" %}
+    <p>Sorry No Profile Found.. Please Search Again</p>
+    <a href="/"> Go Back</a>
+    {% else %}
+
+    {% for i in filterUser %}
+    <form action="{% url 'view_profile' i.username %}" method="POST">
+        {% csrf_token %}
+        <button class="profile">
+            <img src="{{ i.userprofile.userImage.url }}" alt="">
+            <div class="user_name">
+                <p> {{ i.first_name }} {{ i.last_name }}</p>
+                
+            </div>
+        </button>
+    </form>
+
+    {% endfor %}
+
+
+    {% endif %}
+</div>
+{% endblock %}

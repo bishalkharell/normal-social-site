@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<br>
+
+<div class="search-button" style="width: 30%; color: brown;">
+    <form action="{% url 'search' %}" method="GET">
+        <input type="text" name="search_user" placeholder="Search Profile">
+        <input type="submit" value="search">
+    </form>
+</div>
+
+<br>
+
+<div class="container">
+    <h4>Blog Post</h4>
+</div>
+{% for i in blog %}
+<div class="container" style="border-bottom: 3px solid black; padding: 2rem 0 ; margin: 2rem inherit ;">
+
+    <div class="blog-post">
+
+        <div class="profile blog-profile">
+            <img src="{{ i.blog_user.userprofile.userImage.url }}" alt="">
+            <div class="user_name">
+                <p style="font-size:clamp(1rem,1.8rem,2rem); font-family: Verdana, Geneva, Tahoma, sans-serif"> {{ i.blogtitle }}</p>
+                <div class="author-time" style="font-size: 0.9rem; font-weight: lighter; margin-left: 1rem;">
+                    <p> By {{ i.blog_author }}</p>
+                    <p> Uploaded : {{ i.blogtime }}</p>
+                </div>
+
+
+            </div>
+
+        </div>
+        <p> {{ i.blogpost }}</p>
+    </div>
+
+
+</div>
+{% endfor %}
+
+{% else %}
+<div class="content">
+    <video autoplay="true" loop="true" muted="true">
+        <source src="{% static 'video/opening.mp4' %}">
+    </video>
+
+    <div class="headings">
+        <h1>Shadow<span>Eye</span></h1>
+        <p>We Connect you Together</p>
+    </div>
+</div>
+
+
+
+{% endif %}
+
+
+
+{% endblock %}

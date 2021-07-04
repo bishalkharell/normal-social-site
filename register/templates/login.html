@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} <title>Login</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    {% block body %}
+    
+    <div class="container mx-4 my-4">
+        <h1>Login</h1>
+        <form action="" method="POST" >
+            {% csrf_token %}
+            <div class="mb-3 mx-4">
+              <label for="login_username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="login_username"  name="login_username">
+            </div>
+            <div class="mb-3 mx-4">
+              <label for="login_password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="login_password" name="login_password">
+        
+            </div>
+            <input type="submit" value="Login"  class="btn btn-primary mx-4">
+          </form>
+          <p><small class="mx-4">Not Register Yet, <a href="{% url 'registerPage' %}">Sign Up</a> </small></p>
+    </div>
+    {% endblock %}
+    
+    
+</body>
+
+</html>

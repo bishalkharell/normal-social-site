@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Profile</title>
+{% endblock %}
+{% block body %}
+
+
+<div class="container">
+  <h1>Profile</h1>
+
+
+
+  {% if user.is_authenticated %}
+
+
+
+
+  <div class="image-container">
+    <div class="profile_container">
+      <img src="{{ user.userprofile.userImage.url }}" alt="Profile Images">
+
+      <!-- Form to upload Profile Picture -->
+      <form action="{% url 'uploadimage' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Upload New Profile</span>
+
+            <input type="file" id="uploadImage" name="uploadImage" accept="Images/*">
+
+          </div>
+          <button style="background: transparent; border: 0;">
+            <a class="btn-floating btn-large waves-effect waves-light red" style="position:relative">
+              <i class="large material-icons">
+                <div class="logos" style="position:absolute; bottom:-10%; right:30%;">add_a_photo</div>
+              </i></a>
+          </button>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="user_information">
+      <h5> <strong>User Information</strong> </h5>
+      <p>Username: {{user.username}}</p>
+      <p>First Name: {{ user.first_name }}</p>
+      <p> Last Name: {{ user.last_name }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p style="border: 1px solid black; padding: 1rem ;">Bio : {{ user.userprofile.bio }}</p>
+      <button><a href="{% url 'update_profile' %}">Update Your Information</a></button>
+    </div>
+  </div>
+
+
+  <div class="profile-navBar">
+    <div class="profile-nav">
+
+      <nav>
+        <div class="nav-wrapper">
+          <ul>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'profile_gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'profile_settings' %}">Settings</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="profile-container">
+
+      {% block profile-posts %}
+      {% if blog|length > 0  %}
+      {% for i in blog %}
+      <div class="container" style="border-bottom: 3px solid black; padding: 2rem 0 ; margin: 2rem inherit ;">
+
+        <div class="blog-post">
+
+          <div class="profile blog-profile">
+            <img src="{{ i.blog_user.userprofile.userImage.url }}" alt="">
+            <div class="user_name">
+              <p style="font-size:clamp(1rem,1.8rem,2rem); font-family: Verdana, Geneva, Tahoma, sans-serif"> 
+                {{ i.blogtitle }}</p>
+              <div class="author-time" style="font-size: 0.9rem; font-weight: lighter; margin-left: 1rem;">
+                <p> By {{ i.blog_author }}</p>
+                <p> Uploaded : {{ i.blogtime }}</p>
+              </div>
+
+
+            </div>
+
+          </div>
+          <p> {{ i.blogpost }}</p>
+        </div>
+
+
+      </div>
+      {% endfor %}
+      {% else %}
+      <p>No Post Yet.</p>
+
+      {% endif %}
+
+      {% endblock profile-posts %}
+
+
+      {% block profile-nav %}
+
+      {% endblock profile-nav %}
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  {% endif %}
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Update Blog</title>
+{% endblock %}
+
+{% block body %}
+    <h2>Update Blog</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <label for="title" style="display: block;">Blog Title</label>
+        <input type="text" name="title" id="title" value="{{ blog.blogtitle}}" style="display: block; width: 50%; ">
+        <label for="blogpost" style="display: block;">Blog Post</label>
+        <textarea type="text" name="blogpost" id="blogpost"
+            style="display: block; width: 50%;height: 30vh;"> {{ blog.blogpost }}</textarea>
+
+        <input type="submit" value="Update Blog" style="display: block;">
+
+    </form>
+
+{% endblock %}

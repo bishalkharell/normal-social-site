@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="image-container">
+        <div class="profile_container">
+            <img src="{{ user.userprofile.userImage.url }}" alt="Profile Images">
+        </div>
+        <div class="user_information">
+            <h5> <strong>Profile Information</strong> </h5>
+            <p>Username: {{user.username}}</p>
+            <p>First Name: {{ user.first_name }}</p>
+            <p> Last Name: {{ user.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p style="border: 1px solid black; padding: 1rem ;">Bio : {{ user.userprofile.bio }}</p>
+        </div>
+    </div>
+
+    <fieldset>
+        <legend style="margin: 3rem 0 1rem 0;">{{ user.username}} Gallery</legend>
+        {% if gallery|length == 0 %}
+        <p>No Photo Gallery Available.</p>
+        {% else %}
+        <div class="gallery_container view_profile_gallery">
+
+            {% for g in gallery %}
+            <div class="gallery_image">
+                <img src=" {{ g.userGallery.url }}" alt="" style="z-index: 500;">
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </fieldset>
+</div>
+{% endblock %}

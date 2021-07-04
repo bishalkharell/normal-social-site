@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Home</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    {% block body %}
+
+    
+    <div class="container">
+        <h2 style="margin:2rem 0;">Sign Up</h2>
+        
+        <div class="second-form">
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+                {% for form in userForm %}
+                    <div class="error" style="margin: 0.3rem 0;color: crimson; font-size: 0.9rem;"> {{ form.errors}} </div>
+                    {{ form.label }}
+                    {{ form }}
+
+                {% endfor %}
+                <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Register
+                </button>
+            </form>
+        </div>
+
+
+
+
+        <!-- This is a custom Register Form -->
+        <!-- <div class="row">
+            <form class="col s12" action="" method="POST">
+                {% csrf_token %}
+              <div class="row">
+                <div class="input-field col s6">
+                  <input  id="first_name" type="text" class="validate" name="first_name">
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate" name="last_name">
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="username" type="text" class="validate" name="username">
+                  <label for="username">Username</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate" name="email">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input  id="password" type="password" class="validate" name="password">
+                  <label for="password">Password</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="confirm_password" type="password" class="validate" name="confirm_password">
+                  <label for="confirm_password">Confirm Password </label>
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Register
+              </button>
+            </form>
+            
+          </div> -->
+    </div>
+
+
+    
+    {% endblock %}
+
+
+
+
+</body>
+
+</html>

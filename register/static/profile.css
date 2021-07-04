@@ -1,0 +1,147 @@
+.dropdown-container{
+    width: 100%;
+    height: auto;
+    /* color: black; */
+    position: relative;
+    margin-right: 7rem;
+}
+
+.dropdown-container img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+.user-model{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.user-model p{
+    position: relative;
+    margin-right: 20px;
+    
+}
+
+.user-model p::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -15px;
+    height: 70%;
+    width: 2px;
+    background: #43434348;
+    margin-right: 5px;
+
+}
+
+
+
+.user-model-info{
+    /* background: #fff; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    cursor: pointer;
+    padding:0  0.8rem;
+}
+
+.user-model-info i{
+    font-weight: bolder;
+    margin-left: 2px;
+    user-select: none;
+    transition: 0.3s ease-in;
+}
+
+.dropdown-menu{
+    position: absolute;
+    right: 70;
+    background: rgba(238, 110, 115,0.9);
+    transform: scale(0,0);
+    min-width: 300px;
+    transform-origin: top;
+    transition: 0.5s ease-in-out;
+    margin: 0.5rem 0 0 0;
+    box-shadow: 5px 10px 8px #888888;
+    z-index: 999;
+}
+
+.dropdown-user-info{
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    padding: 1rem;
+    border-bottom: 3px solid whitesmoke;
+    
+}
+
+.user-dropdown-info p{
+    line-height: 1.5;
+    margin-left: 1.5rem;
+    font-size: 0.85rem;
+    font-size: clamp(0.7rem,0.8vw,0.9rem);
+   
+}
+
+.user-dropdown-info p:first-child{
+    font-weight: bold;
+    font-size: clamp(1rem,1.5vw,1.7rem);
+}
+
+.dropdown-menus ul{
+    display:flex;
+    flex-direction: column;
+}
+.dropdown-menus ul li{
+    border-bottom: 2px solid whitesmoke;
+    
+
+}
+
+.dropdown-menus a {
+    margin:0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.8rem,1vw,1.2rem);
+}
+
+.dropdown-menus ul li a i{
+    margin-right:0.2rem;
+}
+
+
+
+
+/* Profile NavBar POSTS | Gallery | Settings */
+
+.profile-navBar{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    min-height: 300px;
+}
+
+.profile-nav li{
+    margin-left: 0.5rem;
+}
+
+
+
+/* Delete User Profile */
+
+.delete-info{
+    transform:scale(1,1);
+    transform-origin: left;
+    flex: 100%;
+}
+
+
+
+
+
