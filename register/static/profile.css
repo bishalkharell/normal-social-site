@@ -132,15 +132,15 @@
 }
 
 
+/* Profile Settings Delete User Modal */
 
-/* Delete User Profile */
+.modal-footer form  input[type="submit"]{
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: cadetblue;
 
-.delete-info{
-    transform:scale(1,1);
-    transform-origin: left;
-    flex: 100%;
 }
-
 
 
 

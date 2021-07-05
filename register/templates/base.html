@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="{% static 'profile.css' %}">
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <link rel="stylesheet" href="{% static 'base.css' %}">
-  <link rel="stylesheet" href="{% static 'blog.css' %}">
 </head>
 
 <body>
@@ -126,17 +125,18 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
-    let a = "{{ request.user }}"
-    console.log("The user is ",a);
-    
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('.sidenav');
-      var instances = M.Sidenav.init(elems);
-    });
 
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.materialboxed');
       var instances = M.Materialbox.init(elems);
+      
+      // JS for Delete User Modal
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+      
+      // For SideNav
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
     });
 
   </script>

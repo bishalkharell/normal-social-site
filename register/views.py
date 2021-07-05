@@ -250,9 +250,22 @@ def uploadGallery(request):
 @login_required(login_url='/login')
 def delete_user(request):
     user  = request.user
-    user.delete()
-    
-    return redirect('/')
+    #  Checking password for deleting account
+    if request.method == "POST":
+        checkPassword = request.POST['check_password']
+        check_Password = user.check_password(checkPassword)
+       
+        if checkPassword == '':
+            messages.info(request,"Please Enter Password to Continue.")
+            return redirect('/settings')
+
+        if check_Password == True:
+            user.delete()
+            messages.info(request," User has been deleted. Thank you for Joining Us.")
+            return redirect('/')
+        else:
+            messages.info(request," Invalid Password.")
+            return redirect('/settings')
 
 
 
@@ -273,21 +286,4 @@ def profile_gallery(request):
     return render(request,'profile_html/profile_gallery.html',content)
 
 def profile_settings(request):
-    #  Checking password for deleting account
-    user = request.user
-    if request.method == "POST":
-        checkPassword = request.POST['check_password'] 
-        check_Password = user.check_password(checkPassword)
-       
-        if checkPassword == '':
-            messages.info(request,"Please Enter Password to Continue.")
-            return redirect('profile')
-
-        if check_Password == True:
-            user.delete()
-            messages.info(request," User has been deleted. Thank you for Joining Us.")
-            return redirect('/')
-        else:
-            messages.info(request," Invalid Password.")
-            return redirect('profile')
     return render(request,'profile_html/profile_settings.html')

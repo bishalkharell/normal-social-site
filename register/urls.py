@@ -21,6 +21,8 @@ urlpatterns = [
     path('view_profile/<str:username>',views.view_profile,name="view_profile"),
     path('profile/gallery/',views.profile_gallery,name="profile_gallery"),
     path('settings/',views.profile_settings,name="profile_settings"),
+    path('delete_user/',views.delete_user,name="delete_user"),
+
 
 
     

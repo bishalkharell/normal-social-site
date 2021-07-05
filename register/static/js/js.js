@@ -33,15 +33,6 @@ function showMenu(){
 
 
 
-// function delete_account(){
-//     var delete_info = document.getElementById('delete-info')
-//     // delete_info.style.transform="scale(1,1)"
-//     // delete_info.style.transformOrigin="left";
-//     // delete_info.style.transition =" 500ms ease";
-
-// }
-
-
 
 function show_addBlog(){
     let blog = document.getElementById('addBlog');
